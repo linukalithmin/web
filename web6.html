@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Applied Science</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .header a {
+            font-size: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px; /* Adjusted margin for spacing */
+            display: block;
+        }
+
+        .header a:hover {
+            color: #FFD700; /* Optional hover effect */
+        }
+
+        .header h1 {
+            font-size: 65px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .header h1 span {
+            display: block;
+            font-size: 50px;
+            margin-top: -10px; /* Optional spacing adjustment */
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 250px; /* Increased margin to push the grid farther below */
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .image-frame {
+            width: 512px;
+            height: 376px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the frame without distortion */
+            border-radius: 12px;
+        }
+
+        .card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .card > div {
+            margin-left: 20px; /* Adds gap between the image and description */
+        }
+
+        .card.reverse > div {
+            margin-left: 0;
+            margin-right: 20px; /* Adds gap for reversed cards */
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                top: 10px;
+                left: 10px;
+                text-align: left;
+            }
+
+            .header a {
+                font-size: 25px;
+                margin-bottom: 15px; /* Adjusted margin for smaller screens */
+            }
+
+            .header h1 {
+                font-size: 50px; /* Adjust title size for smaller screens */
+            }
+
+            .header h1 span {
+                font-size: 40px;
+            }
+
+            .card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .card.reverse {
+                flex-direction: column;
+            }
+
+            .card > div,
+            .card.reverse > div {
+                margin: 0;
+            }
+
+            .image-frame {
+                margin: 0 auto 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="faculties.html">Our Faculties</a>
+            <h1>Faculty of<br><span>Applied Science</span></h1>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <a href="details.html">
+                    <div class="image-frame">
+                        <img src="https://snit.edu.in/wp-content/uploads/2023/08/computer-science-engineering-768x512.jpg" alt="Computer Science">
+                    </div>
+                </a>
+                <div>
+                    <h2>Computer Science & Informatics</h2>
+                </div>
+            </div>
+
+            <div class="card reverse">
+                <a href="details.html">
+                    <div class="image-frame">
+                        <img src="https://via.placeholder.com/512x376" alt="Placeholder Image">
+                    </div>
+                </a>
+                <div>
+                    <h2>Computer Science & Informatics</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the background image dynamically
+        document.body.style.backgroundImage = "url('https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-6/310142835_5453539851409139_6122035691945651766_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=bpKAMaDJb7kQ7kNvgEhMOiv&_nc_oc=Adg9lR6gpAlEds9u44TdOUcq2YZVHhCQTgKA-SzselMMd_WN1BHHQ_HCoAtn_JYprt8&_nc_zt=23&_nc_ht=scontent.fcmb1-2.fna&_nc_gid=Ay22hAxwGHy8-_Fb67cBQHX&oh=00_AYBSi7cnp92yYbTNQPsqdN-yGMcgZv__zCDz-6vAHhaSaw&oe=678BB246')";
+    </script>
+</body>
+</html>
