@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Faculties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .nav-wrapper {
+            padding: 5rem 0 2rem 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            font-weight: 500;
+            font-size: 2.5rem;
+        }
+
+        .title-container {
+            margin: 0 0 6rem 2rem;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faculty-title {
+            font-size: 4rem;
+            color: #000;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .degree-title {
+            font-size: 4rem;
+            color: #000;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .faculty-grid {
+            display: grid;
+            gap: 7rem;
+            width: 90%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .faculty-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .faculty-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faculty-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .faculty-item:nth-child(even) .faculty-content {
+            direction: ltr;
+        }
+
+        .faculty-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 auto 0 0;
+        }
+
+        .faculty-item:nth-child(even) .faculty-image {
+            margin: 0 0 0 auto;
+        }
+
+        .faculty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .faculty-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .faculty-content {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .faculty-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #000;
+            transition: color 0.3s ease;
+        }
+
+        .faculty-nav {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .faculty-nav-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .faculty-nav-button.active {
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper,
+            .title-container {
+                padding-left: 1rem;
+                margin-left: 1rem;
+            }
+
+            .title-container {
+                margin-bottom: 4rem;
+            }
+
+            .faculty-grid {
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .faculty-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .faculty-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .faculty-image {
+                height: 300px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .faculty-item:nth-child(even) .faculty-image {
+                margin: 0 auto;
+            }
+
+            .faculty-title {
+                font-size: 1.75rem;
+            }
+
+            .degree-title {
+                font-size: 3rem;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="#" class="nav-link">Our Faculties</a>
+        </div>
+
+        <div class="faculty-nav" id="facultyNav">
+            <!-- Navigation buttons will be populated here -->
+        </div>
+
+        <div class="title-container" id="facultyTitle">
+            <div class="faculty-title">Faculty of</div>
+            <div class="degree-title" id="currentFaculty"></div>
+        </div>
+
+        <div class="faculty-grid" id="departmentsGrid">
+            <!-- Departments will be populated here -->
+        </div>
+    </div>
+
+    <script>
+        // Faculty and department data structure
+        const facultyData = {
+            "Applied Science": [
+                "Department of Computer Science & Informatics",
+                "Department of Applied Mathematics",
+                "Department of Physics"
+            ],
+            "Engineering": [
+                "Department of Mechanical Engineering",
+                "Department of Civil Engineering",
+                "Department of Electrical Engineering"
+            ],
+            "Medicine": [
+                "Department of Clinical Medicine",
+                "Department of Biomedical Sciences",
+                "Department of Public Health"
+            ],
+            "Arts": [
+                "Department of Literature",
+                "Department of Philosophy",
+                "Department of Fine Arts"
+            ],
+            "Business": [
+                "Department of Management",
+                "Department of Finance",
+                "Department of Marketing"
+            ]
+        };
+
+        // Create navigation buttons
+        const navContainer = document.getElementById('facultyNav');
+        Object.keys(facultyData).forEach((faculty, index) => {
+            const button = document.createElement('button');
+            button.className = 'faculty-nav-button';
+            button.textContent = faculty;
+            button.onclick = () => updateFacultyContent(faculty);
+            if (index === 0) button.classList.add('active');
+            navContainer.appendChild(button);
+        });
+
+        // Function to update content
+        function updateFacultyContent(faculty) {
+            // Update navigation active state
+            document.querySelectorAll('.faculty-nav-button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === faculty) btn.classList.add('active');
+            });
+
+            // Update faculty title
+            document.getElementById('currentFaculty').textContent = faculty;
+
+            // Update departments
+            const departmentsGrid = document.getElementById('departmentsGrid');
+            departmentsGrid.innerHTML = ''; // Clear existing departments
+
+            facultyData[faculty].forEach((dept, index) => {
+                const deptElement = createDepartmentElement(dept, index);
+                departmentsGrid.appendChild(deptElement);
+            });
+
+            // Initialize intersection observer for new elements
+            initializeObserver();
+        }
+
+        // Create department element
+        function createDepartmentElement(departmentName, index) {
+            const article = document.createElement('article');
+            article.className = 'faculty-item';
+            
+            article.innerHTML = `
+                <a href="/${departmentName.toLowerCase().replace(/\s+/g, '-')}" class="faculty-link faculty-image">
+                    <img src="/api/placeholder/800/600" alt="${departmentName}">
+                </a>
+                <div class="faculty-content">
+                    <a href="/${departmentName.toLowerCase().replace(/\s+/g, '-')}" class="faculty-link">
+                        <h3>${departmentName}</h3>
+                    </a>
+                </div>
+            `;
+
+            return article;
+        }
+
+        // Initialize intersection observer
+        function initializeObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.faculty-item').forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Initialize with first faculty
+        updateFacultyContent(Object.keys(facultyData)[0]);
+    </script>
+</body>
+</html>
