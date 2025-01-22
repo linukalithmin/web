@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Faculties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .nav-wrapper {
+            padding: 5rem 0 2rem 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            font-weight: 500;
+            font-size: 2.5rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #333;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .title-container {
+            margin: 0 0 6rem 2rem;
+            text-align: left;
+        }
+
+        .faculty-title {
+            font-size: 4rem;
+            color: #000;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .degree-title {
+            font-size: 4rem;
+            color: #000;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .faculty-grid {
+            display: grid;
+            gap: 7rem;
+            width: 90%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .faculty-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7rem;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .faculty-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faculty-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .faculty-item:nth-child(even) .faculty-content {
+            direction: ltr;
+        }
+
+        .faculty-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .faculty-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 auto 0 0;
+        }
+
+        .faculty-item:nth-child(even) .faculty-image {
+            margin: 0 0 0 auto;
+        }
+
+        .faculty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .faculty-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .faculty-content {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .faculty-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #000;
+            transition: color 0.3s ease;
+        }
+
+        .faculty-link:hover h3 {
+            color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-wrapper,
+            .title-container {
+                padding-left: 1rem;
+                margin-left: 1rem;
+            }
+
+            .title-container {
+                margin-bottom: 4rem;
+            }
+
+            .faculty-grid {
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .faculty-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .faculty-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .faculty-image {
+                height: 300px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .faculty-item:nth-child(even) .faculty-image {
+                margin: 0 auto;
+            }
+
+            .faculty-title {
+                font-size: 1.75rem;
+            }
+
+            .degree-title {
+                font-size: 3rem;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+            }
+        }
+
+        .spacer {
+            height: 2rem;
+            
+        }
+
+        .spacer1 {
+            height: 2rem;
+            
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="#" class="nav-link">Our Faculties</a>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="title-container">
+            <div class="faculty-title">Faculty of Applied</div>
+            <div class="degree-title">Science</div>
+        </div>
+
+        <div class="spacer1"></div>
+
+        <div class="faculty-grid">
+            <div class="faculty-item">
+                <a href="/computer-science" class="faculty-link faculty-image">
+                    <img src="c.webp" alt="Computer Science Laboratory">
+                </a>
+                <div class="faculty-content">
+                    <a href="/computer-science" class="faculty-link">
+                        <h3>Department of Computer Science & Informatics</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="faculty-item">
+                <a href="/software-engineering" class="faculty-link faculty-image">
+                    <img src="e.webp" alt="Research Facilities">
+                </a>
+                <div class="faculty-content">
+                    <a href="/software-engineering" class="faculty-link">
+                        <h3>Department of Applied Earth Sciences</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="faculty-item">
+                <a href="/data-science" class="faculty-link faculty-image">
+                    <img src="c.webp" alt="Student Workspace">
+                </a>
+                <div class="faculty-content">
+                    <a href="/data-science" class="faculty-link">
+                        <h3>Department of Science and Technology</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.faculty-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+
+</html>
