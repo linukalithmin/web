@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Applied Science</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 5%;
+        }
+
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background: #666;
+            border-radius: 50%;
+        }
+
+        .university-name {
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .title-section {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #2563eb;
+            margin-top: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #334155;
+            margin-bottom: 2rem;
+        }
+
+        .intro-text {
+            color: #64748b;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        .content-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .image-container {
+            flex: 1;
+            aspect-ratio: 4/3;
+            background: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content h3 {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .text-content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                flex-direction: column !important;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <div class="logo-circle"></div>
+            <div class="university-name">Uva Wellassa University of Sri Lanka</div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#academic">Academic</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#administration">Administration</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="title-section">
+            <h1>Our Faculties</h1>
+            <h2>Faculty of Applied Science</h2>
+            <p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus justo mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+        </section>
+
+        <section class="content-section" data-aos="fade-up">
+            <div class="image-container">
+                <img src="/api/placeholder/400/300" alt="Computer Science Department">
+            </div>
+            <div class="text-content">
+                <h3>Computer Science & Informatics</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus justo mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+            </div>
+        </section>
+
+        <section class="content-section" data-aos="fade-up">
+            <div class="image-container">
+                <img src="/api/placeholder/400/300" alt="Computer Science Labs">
+            </div>
+            <div class="text-content">
+                <h3>Computer Science & Informatics</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus justo mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+            </div>
+        </section>
+
+        <section class="content-section" data-aos="fade-up">
+            <div class="image-container">
+                <img src="/api/placeholder/400/300" alt="Research Facilities">
+            </div>
+            <div class="text-content">
+                <h3>Computer Science & Informatics</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus justo mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

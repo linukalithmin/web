@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Faculties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            padding: 2rem;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
+
+        .faculty-intro {
+            margin-bottom: 4rem;
+        }
+
+        .lorem-text {
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .faculty-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .faculty-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+
+        .faculty-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faculty-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .faculty-item:nth-child(even) .faculty-content {
+            direction: ltr;
+        }
+
+        .faculty-image {
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .faculty-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .faculty-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .faculty-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .faculty-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .faculty-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="faculty-intro">
+            <h1>Our Faculties</h1>
+            <h2>Faculty of Applied Science</h2>
+            <p class="lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+        </div>
+
+        <div class="faculty-grid">
+            <div class="faculty-item">
+                <div class="faculty-image"></div>
+                <div class="faculty-content">
+                    <h3>Computer Science & Informatics</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+                </div>
+            </div>
+
+            <div class="faculty-item">
+                <div class="faculty-image"></div>
+                <div class="faculty-content">
+                    <h3>Computer Science & Informatics</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+                </div>
+            </div>
+
+            <div class="faculty-item">
+                <div class="faculty-image"></div>
+                <div class="faculty-content">
+                    <h3>Computer Science & Informatics</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus mi, ultrices ac fermentum sed, ornare elementum mauris. Vestibulum sed posuere.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Intersection Observer for fade-in animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all faculty items
+        document.querySelectorAll('.faculty-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
