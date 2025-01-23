@@ -200,7 +200,7 @@
         </div>
 
         <div class="faculty-nav" id="facultyNav">
-            <!-- Navigation buttons will be populated here -->
+            
         </div>
 
         <div class="title-container" id="facultyTitle">
@@ -209,12 +209,12 @@
         </div>
 
         <div class="faculty-grid" id="departmentsGrid">
-            <!-- Departments will be populated here -->
+            
         </div>
     </div>
 
     <script>
-        // Faculty and department data structure
+        
         const facultyData = {
             "Applied Science": [
                 "Department of Computer Science & Informatics",
@@ -232,18 +232,31 @@
                 "Department of Information and Communication Technology",
                 "Department of Biosystems Technology"
             ],
-            "MEDICINE": [
-                "Department of Literature",
-                "Department of Philosophy",
-                "Department of Fine Arts"
+            "Medicine": [
+                "Department of Anatomy",
+                "Department of Physiology",
+                "Department of Biochemistry",
+                "Department of Microbiology",
+                "Department of Parasitology",
+                "Department of Pathology",
+                "Department of Pharmacology",
+                "Department of Forensic Medicine",
+                "Department of Community Medicine",
+                "Department of Medicine",
+                "Department of Surgery",
+                "Department of Obstetrics & amp Gynaecology",
+                "Department of Paediatrics",
+                "Department of Psychiatry",
+                "Department of Family Medicine",
+                "Department of Medical Education"
             ],
             "Animal Science and Export Agriculture ": [
                 "Department of Animal Science",
-                "Department of Export Agriculture "
+                "Department of Export Agriculture"
             ]
         };
 
-        // Create navigation buttons
+        
         const navContainer = document.getElementById('facultyNav');
         Object.keys(facultyData).forEach((faculty, index) => {
             const button = document.createElement('button');
@@ -254,38 +267,39 @@
             navContainer.appendChild(button);
         });
 
-        // Function to update content
+        
         function updateFacultyContent(faculty) {
-            // Update navigation active state
+            
             document.querySelectorAll('.faculty-nav-button').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.textContent === faculty) btn.classList.add('active');
             });
 
-            // Update faculty title
+            
             document.getElementById('currentFaculty').textContent = faculty;
 
-            // Update departments
+           
             const departmentsGrid = document.getElementById('departmentsGrid');
-            departmentsGrid.innerHTML = ''; // Clear existing departments
+            departmentsGrid.innerHTML = ''; 
 
             facultyData[faculty].forEach((dept, index) => {
                 const deptElement = createDepartmentElement(dept, index);
                 departmentsGrid.appendChild(deptElement);
             });
 
-            // Initialize intersection observer for new elements
+            
             initializeObserver();
         }
 
-        // Create department element
+        
         function createDepartmentElement(departmentName, index) {
             const article = document.createElement('article');
             article.className = 'faculty-item';
             
+            
             article.innerHTML = `
                 <a href="/${departmentName.toLowerCase().replace(/\s+/g, '-')}" class="faculty-link faculty-image">
-                    <img src="/api/placeholder/800/600" alt="${departmentName}">
+                    <img src="${departmentName}.JPEG" alt="${departmentName}">
                 </a>
                 <div class="faculty-content">
                     <a href="/${departmentName.toLowerCase().replace(/\s+/g, '-')}" class="faculty-link">
@@ -297,7 +311,7 @@
             return article;
         }
 
-        // Initialize intersection observer
+        
         function initializeObserver() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -314,7 +328,7 @@
             });
         }
 
-        // Initialize with first faculty
+        
         updateFacultyContent(Object.keys(facultyData)[0]);
     </script>
 </body>
